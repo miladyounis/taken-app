@@ -10,7 +10,10 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.miladyounis.taken",
       "infoPlist": {
-        "UIBackgroundModes": ["fetch", "remote-notification"]
+        "UIBackgroundModes": [
+          "fetch",
+          "remote-notification"
+        ]
       }
     },
     "android": {
@@ -19,7 +22,11 @@
         "backgroundColor": "#FFF4EA",
         "foregroundImage": "./assets/icon.png"
       },
-      "permissions": ["RECEIVE_BOOT_COMPLETED", "VIBRATE", "POST_NOTIFICATIONS"]
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "POST_NOTIFICATIONS"
+      ]
     },
     "web": {
       "favicon": "./assets/icon.png"
@@ -32,7 +39,9 @@
           "color": "#F58A7E",
           "sounds": []
         }
-      ]
+      ],
+      "expo-font",
+      "expo-secure-store"
     ]
   }
 }
