@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "taken?",
+    "slug": "taken-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "backgroundColor": "#FFF4EA"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.miladyounis.taken",
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch", "remote-notification"]
+      }
+    },
+    "android": {
+      "package": "com.miladyounis.taken",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFF4EA",
+        "foregroundImage": "./assets/icon.png"
+      },
+      "permissions": ["RECEIVE_BOOT_COMPLETED", "VIBRATE", "POST_NOTIFICATIONS"]
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#F58A7E",
+          "sounds": []
+        }
+      ]
+    ]
+  }
+}

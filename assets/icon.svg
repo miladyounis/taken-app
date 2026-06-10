@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="tile" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#FF9E8F"/>
+      <stop offset="0.62" stop-color="#F58A7E"/>
+      <stop offset="1" stop-color="#EE7E70"/>
+    </linearGradient>
+    <radialGradient id="hl" cx="0.3" cy="0.08" r="0.75">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background (coral gradient + soft highlight) -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#tile)"/>
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#hl)"/>
+
+  <!-- Pill group -->
+  <g transform="translate(512, 512)">
+    <!-- Cream pill body -->
+    <rect x="-360" y="-150" width="720" height="300" rx="150" ry="150" fill="#FFF4EA"/>
+
+    <!-- Left half tint (soft apricot) -->
+    <path d="M -360 0
+             a 150 150 0 0 1 150 -150
+             L 0 -150
+             L 0 150
+             L -210 150
+             a 150 150 0 0 1 -150 -150
+             Z" fill="#FFDFA0"/>
+
+    <!-- Divider line -->
+    <line x1="0" y1="-130" x2="0" y2="130" stroke="#F0E2D2" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Heart on left half -->
+    <g transform="translate(-180, 0)">
+      <path d="M 0 80
+               C -130 8, -130 -56, -56 -56
+               C -16 -56, 0 -32, 0 -32
+               C 0 -32, 16 -56, 56 -56
+               C 130 -56, 130 8, 0 80 Z"
+            fill="#F58A7E"/>
+    </g>
+
+    <!-- "taken" text on right half -->
+    <text x="180" y="38"
+          font-family="Nunito, 'Helvetica Neue', Arial, sans-serif"
+          font-weight="800"
+          font-size="120"
+          fill="#D8654F"
+          text-anchor="middle"
+          letter-spacing="-3">taken</text>
+  </g>
+
+  <!-- Question mark badge (top-right corner of pill area) -->
+  <g transform="translate(800, 360)">
+    <!-- Dark cocoa circle -->
+    <circle cx="0" cy="0" r="100" fill="#3A322E"/>
+    <!-- Question mark -->
+    <text x="0" y="36"
+          font-family="Nunito, 'Helvetica Neue', Arial, sans-serif"
+          font-weight="800"
+          font-size="140"
+          fill="#F58A7E"
+          text-anchor="middle">?</text>
+  </g>
+</svg>
