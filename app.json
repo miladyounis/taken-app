@@ -19,8 +19,8 @@
     "android": {
       "package": "com.miladyounis.taken",
       "adaptiveIcon": {
-        "backgroundColor": "#FFF4EA",
-        "foregroundImage": "./assets/icon.png"
+        "backgroundColor": "#F58A7E",
+        "foregroundImage": "./assets/adaptive-icon.png"
       },
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
