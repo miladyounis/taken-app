@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { supabase } from './supabase';
+import { registerPushToken } from './push';
 
 const AuthContext = createContext(null);
 
@@ -16,6 +17,8 @@ export function AuthProvider({ children }) {
       .eq('id', userId)
       .single();
     setProfile(data ?? null);
+    // Register this device for push (no-op in Expo Go / on simulators).
+    registerPushToken(userId).catch(() => {});
   }, []);
 
   useEffect(() => {
