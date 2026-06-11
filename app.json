@@ -18,6 +18,7 @@
     },
     "android": {
       "package": "com.miladyounis.taken",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#F58A7E",
         "foregroundImage": "./assets/adaptive-icon.png"
@@ -42,6 +43,12 @@
       ],
       "expo-font",
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ed983bdc-9cbf-4fa7-985f-cd20dee5f6e6"
+      }
+    },
+    "owner": "miladyounis"
   }
 }

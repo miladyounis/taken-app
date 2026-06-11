@@ -36,6 +36,10 @@ yarn-error.*
 # Supabase keys (local only)
 src/lib/config.js
 
+# FCM service account private key (never commit)
+google-service-account*.json
+fcm-*.json
+
 # typescript
 *.tsbuildinfo
 

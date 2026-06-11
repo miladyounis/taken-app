@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "160138401699",
+    "project_id": "taken-development",
+    "storage_bucket": "taken-development.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160138401699:android:23540dfbcd2d00adef2c16",
+        "android_client_info": {
+          "package_name": "com.miladyounis.taken"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRuh4yrLc4WB0zzM6KyCS63jC2e1Zkm64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

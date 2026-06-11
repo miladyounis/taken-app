@@ -34,6 +34,8 @@ export default function SendNudgeScreen() {
         coupleId: profile.couple_id,
         fromUser: profile.id,
         toUser: partnerProfile.id,
+        toToken: partnerProfile.expo_push_token,
+        fromName: profile.display_name,
         message: message.trim(),
       });
       navigation.goBack();

@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { sendPush } from './push';
 
 // The other person in your couple (or null if they haven't joined yet).
 export async function getPartner(myId, coupleId) {
@@ -25,18 +26,21 @@ export async function getInviteCode(coupleId) {
 
 // Send a nudge to your partner. Inserts the row (Realtime delivers it in-app);
 // push delivery for a closed app is added later via an Edge Function.
-export async function sendNudge({ coupleId, fromUser, toUser, message }) {
+export async function sendNudge({ coupleId, fromUser, toUser, toToken, fromName, message }) {
   const { data, error } = await supabase
     .from('nudges')
     .insert({ couple_id: coupleId, from_user: fromUser, to_user: toUser, message })
     .select()
     .single();
   if (error) throw error;
+
+  // Fire the real push notification to the partner's device.
+  await sendPush(toToken, fromName ? `${fromName} 💛` : 'taken?', message, { nudgeId: data.id });
   return data;
 }
 
 // Confirm a dose ("I took it") and send a little reply nudge back to your partner.
-export async function confirmDose({ coupleId, userId, partnerId, nudgeId, label }) {
+export async function confirmDose({ coupleId, userId, partnerId, partnerToken, myName, nudgeId, label }) {
   const { error } = await supabase.from('doses').insert({
     couple_id: coupleId,
     user_id: userId,
@@ -52,12 +56,14 @@ export async function confirmDose({ coupleId, userId, partnerId, nudgeId, label 
 
   // Reply nudge: care going back the other way.
   if (partnerId) {
+    const replyMsg = 'took them 💕 thank you for looking out for me';
     await supabase.from('nudges').insert({
       couple_id: coupleId,
       from_user: userId,
       to_user: partnerId,
-      message: 'took them 💕 thank you for looking out for me',
+      message: replyMsg,
     });
+    await sendPush(partnerToken, myName ? `${myName} took them ✓` : 'taken? ✓', replyMsg);
   }
 }
 

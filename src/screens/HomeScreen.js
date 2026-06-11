@@ -45,6 +45,8 @@ export default function HomeScreen() {
         coupleId: profile.couple_id,
         userId: profile.id,
         partnerId: partner?.id,
+        partnerToken: partner?.expo_push_token,
+        myName: profile.display_name,
         nudgeId: nudge.id,
         label: nudge.message,
       });
