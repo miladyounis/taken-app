@@ -16,6 +16,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import EditReminderScreen from './src/screens/EditReminderScreen';
+import SendNudgeScreen from './src/screens/SendNudgeScreen';
 import AuthScreen from './src/screens/AuthScreen';
 import PairingScreen from './src/screens/PairingScreen';
 import { AuthProvider, useAuth } from './src/lib/AuthContext';
@@ -49,6 +50,7 @@ function MainStack() {
           ),
         })}
       />
+      <Stack.Screen name="SendNudge" component={SendNudgeScreen} options={{ title: '' }} />
       <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'reminders' }} />
       <Stack.Screen name="EditReminder" component={EditReminderScreen} options={{ title: '' }} />
     </Stack.Navigator>
