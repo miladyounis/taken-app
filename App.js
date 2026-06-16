@@ -19,7 +19,10 @@ import EditReminderScreen from './src/screens/EditReminderScreen';
 import SendNudgeScreen from './src/screens/SendNudgeScreen';
 import AuthScreen from './src/screens/AuthScreen';
 import PairingScreen from './src/screens/PairingScreen';
+import AlarmScreen from './src/screens/AlarmScreen';
 import { AuthProvider, useAuth } from './src/lib/AuthContext';
+import { navigationRef, flushPendingNavigation } from './src/lib/navigation';
+import { useNotificationRouting } from './src/lib/notificationRouting';
 import { colors } from './src/theme';
 
 SplashScreen.preventAutoHideAsync();
@@ -35,6 +38,7 @@ const screenOptions = {
 };
 
 function MainStack() {
+  useNotificationRouting();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
@@ -53,6 +57,11 @@ function MainStack() {
       <Stack.Screen name="SendNudge" component={SendNudgeScreen} options={{ title: '' }} />
       <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'reminders' }} />
       <Stack.Screen name="EditReminder" component={EditReminderScreen} options={{ title: '' }} />
+      <Stack.Screen
+        name="Alarm"
+        component={AlarmScreen}
+        options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }}
+      />
     </Stack.Navigator>
   );
 }
@@ -92,7 +101,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <AuthProvider>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef} onReady={flushPendingNavigation}>
           <Root />
         </NavigationContainer>
       </AuthProvider>

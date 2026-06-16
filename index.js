@@ -1,7 +1,12 @@
 import { registerRootComponent } from 'expo';
 import { LogBox } from 'react-native';
+import notifee from '@notifee/react-native';
 
 import App from './App';
+
+// Required by notifee: a background event handler must be registered at the top level.
+// Tapping the full-screen alarm cold-starts the app; routing then sends it to the Alarm screen.
+notifee.onBackgroundEvent(async () => {});
 
 // Expo Go (SDK 53+) can't do remote push and warns loudly via expo-notifications'
 // auto-registration. It's harmless here and won't occur in a development build.

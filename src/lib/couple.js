@@ -40,13 +40,17 @@ export async function sendNudge({ coupleId, fromUser, toUser, toToken, fromName,
 }
 
 // Confirm a dose ("I took it") and send a little reply nudge back to your partner.
-export async function confirmDose({ coupleId, userId, partnerId, partnerToken, myName, nudgeId, label }) {
+export async function confirmDose({
+  coupleId, userId, partnerId, partnerToken, myName,
+  nudgeId, label, confirmType = 'swipe', confirmMediaUrl = null,
+}) {
   const { error } = await supabase.from('doses').insert({
     couple_id: coupleId,
     user_id: userId,
     nudge_id: nudgeId ?? null,
     label: label ?? null,
-    confirm_type: 'swipe',
+    confirm_type: confirmType,
+    confirm_media_url: confirmMediaUrl,
   });
   if (error) throw error;
 
@@ -56,12 +60,17 @@ export async function confirmDose({ coupleId, userId, partnerId, partnerToken, m
 
   // Reply nudge: care going back the other way.
   if (partnerId) {
-    const replyMsg = 'took them 💕 thank you for looking out for me';
+    const withSelfie = confirmType === 'selfie';
+    const replyMsg = withSelfie
+      ? 'took them 💕 here\'s proof 📸'
+      : 'took them 💕 thank you for looking out for me';
     await supabase.from('nudges').insert({
       couple_id: coupleId,
       from_user: userId,
       to_user: partnerId,
       message: replyMsg,
+      media_url: confirmMediaUrl,
+      media_type: withSelfie ? 'image' : null,
     });
     await sendPush(partnerToken, myName ? `${myName} took them ✓` : 'taken? ✓', replyMsg);
   }

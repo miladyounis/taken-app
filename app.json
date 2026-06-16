@@ -26,7 +26,9 @@
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
         "VIBRATE",
-        "POST_NOTIFICATIONS"
+        "POST_NOTIFICATIONS",
+        "USE_FULL_SCREEN_INTENT",
+        "CAMERA"
       ]
     },
     "web": {
@@ -42,7 +44,13 @@
         }
       ],
       "expo-font",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "taken? uses the camera so you can snap a selfie to dismiss a reminder 💕"
+        }
+      ]
     ],
     "extra": {
       "eas": {
